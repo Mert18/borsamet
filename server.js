@@ -23,7 +23,7 @@ client.on('ready', () => {
 client.on('message', async (message) => {
     if (message.content === `${prefix}piyasa`) {
 
-        const res = await axios.get("https://api.nomics.com/v1/currencies/ticker?key=" + process.env.NOMICS_API_KEY + "&ids=BTC,ETH,ADA,SXP,BNB,ALGO,NEO&interval=1d,30d&convert=USDT&per-page=100&page=1")
+        const res = await axios.get("https://api.nomics.com/v1/currencies/ticker?key=" + process.env.NOMICS_API_KEY + "&ids=BTC,ETH,ADA,SXP,BNB,ALGO,NEO,TRYB&interval=1d,30d&convert=USDT&per-page=100&page=1")
             .then(response => {
                 const res = response.data.map((el) => {
                     return el.id + " " + el.price + "\n \n"
