@@ -40,7 +40,7 @@ client.on('message', async (message) => {
             "son duanı et koçum",
             "bekle şimdi ip adresini bulacam"
         ];
-        let y = Math.random() * attackData.length;
+        let y = Math.trunc(Math.random() * attackData.length)
         message.channel.send(attackData[y])
     }
     else if (message.content === `${prefix}avatar`) {
