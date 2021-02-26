@@ -9,12 +9,7 @@ const prefix = "$";
 
 
 
-const attackData = [
-    "haddini bil lan",
-    "ne demek lan sen kimsin mert e laf ediyorsun",
-    "son duanı et koçum",
-    "bekle şimdi ip adresini bulacam"
-];
+
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -39,6 +34,12 @@ client.on('message', async (message) => {
         }
     }
     else if (message.content === `${prefix}saldır`) {
+        const attackData = [
+            "haddini bil lan",
+            "ne demek lan sen kimsin mert e laf ediyorsun",
+            "son duanı et koçum",
+            "bekle şimdi ip adresini bulacam"
+        ];
         let y = Math.random() * attackData.length;
         message.channel.send(attackData[y])
     }
