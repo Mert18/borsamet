@@ -6,19 +6,13 @@ const client = new Discord.Client();
 const axios = require('axios');
 
 const prefix = "$";
-
-
-
-
+client.login(process.env.TOKEN_KEY);
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
-})
+    let testChannel = client.channels.cache.get('804680324947902475');
+    setInterval(async () => {
 
-client.on('message', async (message) => {
-    if (message.content === `${prefix}piyasa`) {
-
-        const res = await axios.get("https://api.nomics.com/v1/currencies/ticker?key=" + process.env.NOMICS_API_KEY + "&ids=BTC,ETH,ADA,SXP,BNB,ALGO,NEO,TRYB&interval=1d,30d&convert=USDT&per-page=100&page=1")
+        const res = await axios.get("https://api.nomics.com/v1/currencies/ticker?key=" + process.env.NOMICS_API_KEY + "&ids=BTC,ETH,CHZ,TRYB&interval=1d,30d&convert=USDT&per-page=100&page=1")
             .then(response => {
                 const res = response.data.map((el) => {
                     return el.id + " " + el.price + "\n \n"
@@ -30,8 +24,14 @@ client.on('message', async (message) => {
             })
 
         if (res) {
-            message.channel.send(res)
+            testChannel.send("** " + res + " **")
         }
+    }, 10000)
+})
+
+client.on('message', async (message) => {
+    if (message.content === `sa`) {
+        message.channel.send("aleyküm selam")
     }
     else if (message.content === `${prefix}saldır`) {
         const attackData = [
@@ -60,9 +60,6 @@ client.on('message', async (message) => {
         let x = Math.trunc(Math.random() * funnyData.length)
         message.channel.send(funnyData[x])
     }
-    else if (message.author.id === "450251843843522584") {
-        message.channel.send("beyler içkisi olan var mı")
-    }
     /* else if (message.author.id === "277462996782153728") {
         message.channel.send("mert haklı")
     } */
@@ -73,4 +70,3 @@ client.on('message', async (message) => {
 
 
 
-client.login(process.env.TOKEN_KEY);
