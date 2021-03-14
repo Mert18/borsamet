@@ -26,7 +26,7 @@ client.on('ready', () => {
         if (res) {
             testChannel.send("** " + res + " **")
         }
-    }, 300000)
+    }, 600000)
 })
 
 client.on('message', async (message) => {
